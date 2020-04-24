@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.5/lib/index.css">
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.5/lib/vant.min.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <title>ele表单验证</title>
+</head>
+
+<body>
+    <div id="app">
+       
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="数字验证" prop="number">
+                    <!-- 数字验证注意事项，需要在v-model后面加.number -->
+                    <el-input v-model.number="ruleForm.number"></el-input>
+            </el-form-item>
+            <el-form-item label="手机验证" prop="phone">
+                <el-input v-model="ruleForm.phone" ></el-input>
+            </el-form-item>
+            <el-form-item label="邮箱验证" prop="Email">
+                <el-input v-model="ruleForm.Email" ></el-input>
+            </el-form-item>
+            <el-form-item label="正则表达式运用，密码强度" prop="password">
+                <el-input v-model="ruleForm.password" ></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submit('ruleForm')">主要按钮</el-button>
+            </el-form-item>
+        </el-form>
+
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                ruleForm:{
+                    number:'',
+                    phone:'',
+                    Email:'',
+                    password:''
+                },
+                rules:{
+                    number:[{ required:true,type:'number',message:"请输入数字"}],
+                    phone:[
+                            { required:true,type:'number',message:'请输入手机号码', trigger: 'blur'},
+                            {min:11,max:11,message:"请输入正确的手机号码"}
+                            ],
+                    Email:[
+                        { required:true,type:'email',message:'请输入正确的  邮箱地址'}
+                    ]
+                }
+            },
+            methods: {  
+                submit(e){
+                    //$refs[这里不能用字符串，也就是（''）包裹]
+                    this.$refs[e].validate((valid)=>{
+                        if(valid){
+                            console.log("提交成功");
+                        }else{
+                            console.log("提交失败");
+                        }   
+                    })
+                    
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

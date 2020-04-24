@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.5/lib/index.css">
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.5/lib/vant.min.js"></script>
+    <title>登录弹框</title>
+    <style>
+
+        .pop_img{
+            width: 88vw;
+        height: 180vw;
+        }
+        .van-popup{
+            background-color: #fff0!important;
+            max-height: none;
+        }
+        .placeHolder{
+            background-color: #fff0;
+            width: 10vw;
+            height: 10vw;
+            
+            position: absolute;
+           
+            top: 144vw;
+            left: 38vw;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        daljkbnfakvfabo
+    <van-popup v-model="show">
+        <img class="pop_img" src="./pop.png" alt="">
+        <div class="placeHolder" @click="show=false"></div>
+
+    </van-popup> 
+        dadgaudhpao
+    </div>
+
+   
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                show:true
+            },
+            methods: {
+
+            },
+
+        })
+    </script>
+</body> 
+</html>

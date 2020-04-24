@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
+    <!-- 引入样式文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@2.5/lib/index.css">
+    <!-- 引入 Vue 和 Vant 的 JS 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vant@2.5/lib/vant.min.js"></script>
+    <title>vant测试</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <van-cell title="单元格" is-link :value="sex" @click="show=true" />
+        </div>
+
+        <van-popup v-model="show" position="bottom" :style="{ height: '30%' }" close-on-click-overlay>
+            <van-picker :columns="columns" show-toolbar @confirm="onConfirm" />
+        </van-popup>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                show: false,
+                columns: ['男', '女'],
+                sex: '',
+
+            },
+            methods: {  
+                onConfirm(value, index) {
+                    this.$toast(`当前值：${value}, 当前索引：${index}`);
+                    this.sex = value;
+                    this.show = false;
+                },
+            },
+
+        })
+    </script>
+</body>
+
+</html>
